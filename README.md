@@ -51,9 +51,7 @@ npm run dev
 
 Visit http://localhost:3000
 
-### Tech Decisions
-
-## ⚙️ Tech Stack
+### ⚙️ Tech Stack
 
 | Layer          | Technology              |
 | -------------- | ----------------------- |

@@ -3,10 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function PATCH(
-  request: Request,
-  context: { params: { id: string } }
-) {
+export async function PATCH(req: Request, context: { params: { id: string } }) {
   const { id } = context.params;
   if (!id) {
     return NextResponse.json({ error: "Missing incident ID" }, { status: 400 });

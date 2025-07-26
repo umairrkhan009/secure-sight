@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔐 Secure Sight
 
-## Getting Started
+**Secure Sight** is a CCTV monitoring software where you can connect upto 3 CCTV feeds — computer vision models help detect certain activity on the feeds (e.g. unauthorised access, gun threats, etc). Reviewers can inspect incidents and mark them as resolved via an intuitive UI.
 
-First, run the development server:
+> 🚧 This project is a part of an internship assignment.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js ≥ 18
+- PostgreSQL (local or cloud)
+- `.env` file with your database credentials (PostgreSQL)
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Set Up the Database
+
+- Create a PostgreSQL database (locally or on a cloud provider like Supabase/Neon).
+
+- Add your connection string to a .env file:
+
+```bash
+DATABASE_URL="postgresql://user:password@localhost:5432/securesight"
+```
+
+- Generate and push schema:
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+- (Optional) Seed dummy incident data:
+
+```bash
+npx tsx prisma/seed.ts
+```
+
+### Run the App
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Tech Decisions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Tech Stack
 
-## Learn More
+| Layer          | Technology              |
+| -------------- | ----------------------- |
+| Frontend       | Next.js 15 (App Router) |
+| Styling        | Tailwind CSS            |
+| ORM            | Prisma                  |
+| Database       | PostgreSQL              |
+| Image Handling | `next/image`            |
 
-To learn more about Next.js, take a look at the following resources:
+### Core Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Incident feed with camera thumbnails
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Incident detail view with resolve button
 
-## Deploy on Vercel
+- Optimistic UI for marking resolved incidents
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Icons for different incident types (e.g. face recognized, unauthorized access)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### If I Had More Time...
+
+- Add interactive timeline
+
+- Integrate 3D model (React Three Fiber)
+
+- Improve mobile responsiveness
+
+- Add authentication and access control
+
+- Unit tests and error boundaries
+
+- Real-time updates via WebSocket
+
+### Project Structure
+
+```bash
+
+/prisma
+    schema.prisma
+    seed.ts
+/public
+
+/src
+    /app
+        /api
+            /incidents
+                route.ts
+        /[id]
+            /resolve
+                route.ts
+    layout.tsx
+    page.tsx
+
+/components
+  CameraStrip.tsx
+  IncidentItem.tsx
+
+  ...
+
+/lib
+  prisma.ts
+```

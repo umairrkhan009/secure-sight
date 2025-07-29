@@ -2,10 +2,6 @@
 
 **Secure Sight** is a CCTV monitoring software where you can connect upto 3 CCTV feeds — computer vision models help detect certain activity on the feeds (e.g. unauthorised access, gun threats, etc). Reviewers can inspect incidents and mark them as resolved via an intuitive UI.
 
-> 🚧 This project is a part of an internship assignment.
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
